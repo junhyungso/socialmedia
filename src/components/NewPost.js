@@ -6,7 +6,6 @@ import {
   useHistory
 } from "react-router-dom";
 
-
 function NewPost(props) {
   const [dragging, setDragging] = useState(false); // to show a dragging effect
   const [desc, setDesc] = useState('');
@@ -32,7 +31,6 @@ function NewPost(props) {
       if (file.type.match(/image.*/)){
 				let reader = new FileReader();			
 				reader.onloadend = (e) => {
-					// TODO: call setPhoto with e.target.result (this is a Base64 image string)
           setPhoto(e.target.result);
 				};
 				reader.readAsDataURL(file);
@@ -41,19 +39,12 @@ function NewPost(props) {
     setDragging(false);    
   }
   function handleDescChange(e){
-    // TODO: call setDesc 
     setDesc('');
   }
   function handleSubmit(e){
-		// TODO:
-		// 1. Prevent default behavior
-		// 2. Show error msg if failed and exit*******
-		// 3. Call the storage update function passed from the parent****
-    // 3. Clear error msg*****
     e.preventDefault();
     if(photo===null){
       alert('Error')  
-      //props.onCancel()
       history.push('/');
     }
     else{
@@ -62,27 +53,21 @@ function NewPost(props) {
   }
 
   function handleCancel(){
-    // TODO: Notify the parent about the cancellation
     history.goBack();
-    //props.onCancel()
   }
   return (
     <div>
-        
         <div className={css.photo}>
           {!photo?  <div className={css.message}>Drop your image</div>:
                     <img src={photo} alt="New Post"/>}
             <FileLoader
               onDragEnter={handleFileDragEnter}
               onDragLeave={handleFileDragLeave}
-              onDrop={handleFileDrop}
-            >
+              onDrop={handleFileDrop}>
 	            <div className={[css.dropArea, dragging?css.dragging:null].join(' ')}
               ></div>
 	          </FileLoader>
-          
         </div>
-        
         <div className={css.desc} >
           <textarea onChange={handleDescChange} />
         </div>

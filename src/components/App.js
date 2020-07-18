@@ -7,22 +7,15 @@ import Profile from './Profile';
 import NewPost from './NewPost';
 import Activity from './Activity';
 import Explore from './Explore';
-// import initialStore from 'utils/initialStore';
-// import uniqueId from 'utils/uniqueId';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import StoreContextProvider, { StoreContext } from 'contexts/StoreContext';
+import StoreContextProvider from 'contexts/StoreContext';
 
-
-    
-function App() {
-    
- 
-
-    return (
+function App() {  
+     return (
       <Router basename={process.env.PUBLIC_URL}>
         <StoreContextProvider>
           <div className={css.container}>
@@ -54,9 +47,6 @@ function App() {
           </div>
         </StoreContextProvider>
       </Router>
-      );
-    
+      ); 
 }
-
-
 export default App;

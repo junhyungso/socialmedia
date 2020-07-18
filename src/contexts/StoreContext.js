@@ -45,22 +45,18 @@ function StoreContextProvider(props){
     });
     }
     function addPost(photo, desc){
-        // TODO:
-        // 1. Create a new post object (use uniqueId('post') to create an id)
-        // 2. Update the store  
-    // 3. Call setPage to come back to the home page
-    const post = {
-        id: uniqueId('post'),
-        userId: store.currentUserId,
-        photo,
-        desc,
-        datetime: new Date().toISOString()
-    };
+        const post = {
+            id: uniqueId('post'),
+            userId: store.currentUserId,
+            photo,
+            desc,
+            datetime: new Date().toISOString()
+        };
 
-    setStore({
-        ...store,
-        posts:store.posts.concat(post)
-    });
+        setStore({
+            ...store,
+            posts:store.posts.concat(post)
+        });
     }
 
 
@@ -75,14 +71,10 @@ function StoreContextProvider(props){
     });
     }
     function removeFollower(userId, followerId){
-    // const follower={
-    //   userId,
-    //   followerId
-    // };
-    setStore({
-        ...store,
-        followers: store.followers.filter(follow=>!(follow.userId===userId && followerId===store.currentUserId))
-        });
+        setStore({
+            ...store,
+            followers: store.followers.filter(follow=>!(follow.userId===userId && followerId===store.currentUserId))
+            });
     }
 
 	return (

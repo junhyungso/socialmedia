@@ -6,7 +6,6 @@ import {
   } from "react-router-dom";
 
 function Navbar(props) {
-   
     return (
         <nav className={css.navbar}>
             <div className={css.navItem}>
