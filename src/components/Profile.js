@@ -16,8 +16,6 @@ function Profile(props) {
     users, posts, followers, currentUserId, addFollower, removeFollower
   } = useContext(StoreContext);
 
- 
-  
   function follow(e){
     console.log("Follow");
     return addFollower;
@@ -26,20 +24,7 @@ function Profile(props) {
     console.log("Unfollow");
     return removeFollower;
   }
-  // if(userId == undefined){
-  //   console.log("default");
-  // }
-  // else{
-  //   if(userId === store.currentUserId){
-  //     button = false;
-  //     current = userId;
-  //   }
-  //   else{
-  //     button = true;
-  //     current = userId;  
-  //   }
-    
-  // }
+
   if(userId === undefined){
     userId = currentUserId
   }
@@ -56,8 +41,6 @@ function Profile(props) {
   let personProfile = users.find(u=>u.id===userId);
   let followersTotal = followers.filter(f=>f.userId === personProfile.id);//other follows user; user is the userId
   let followingTotal = followers.filter(f=>f.followerId === personProfile.id);//user follows other; user is the followerId
-
-  // if (userID!== null)
 
   return (
     <div>
@@ -119,9 +102,7 @@ function Profile(props) {
           .map(post=>
             <Link key={post.id} to={'../'+post.id}>
             <PostThumbnail
-            //  user={findUser(post, store)}
               post={post} 
-            //  followers={findFollowers(post,store)}
             />
             </Link>
           )}
